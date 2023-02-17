@@ -35,5 +35,3 @@ jobs:
       - name: Run Python script
         run: |
           python script.py
-          read -p "Enter some input: " userInput
-          echo "User input: $userInput"

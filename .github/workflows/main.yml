@@ -1,10 +1,11 @@
-name: Continuous Integration
 
-on: 
+name: Mixed inputs with Build
+
+on:
   workflow_dispatch:
     inputs:
-      reason:
-        description: 'Why are you running this manually?'
+      name:
+        description: Who to greet
         required: true
   push:
     branches:
@@ -14,19 +15,14 @@ on:
       - master
 
 jobs:
-  build:
-
-    runs-on: windows-latest
-
+  greet:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x'
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-      working-directory: .\src
-    - name: Test
-      run: dotnet test
-      working-directory: .\src
+    - name: Send greeting
+      run: |
+      
+  build:        
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the pull request branch
+      - uses: actions/checkout@v3

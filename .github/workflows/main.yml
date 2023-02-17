@@ -1,4 +1,3 @@
-
 name: Mixed inputs with Build
 
 on:
@@ -18,11 +17,23 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-    - name: Send greeting
-      run: |
-      
+      - name: Send greeting
+        run: |
+          # Add your code here to send a greeting
+
   build:        
     runs-on: ubuntu-latest
     steps:
       # Checkout the pull request branch
       - uses: actions/checkout@v3
+      # Install Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      # Run the Python script and read user input
+      - name: Run Python script
+        run: |
+          python script.py
+          read -p "Enter some input: " userInput
+          echo "User input: $userInput"
